@@ -1,0 +1,8 @@
+def URLify(s, n):
+    res = ''
+    for i in range(n-1, -1, -1):
+        if s[i] == ' ':
+            res += '02%'
+        else:
+            res += s[i]
+    return res[::-1]
