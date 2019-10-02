@@ -1,0 +1,11 @@
+def isPermutation(s1, s2):
+    if len(s1) != len(s2):
+        return False
+    record = {}
+    for i in range(len(s1)):
+        record[s1[i]] = record.get(s1[i], 0)+1
+    for j in range(len(s2)):
+        record[s2[j]] = record.get(s2[j], 0)-1
+        if record[s2[j]] < 0:
+            return False
+    return True
