@@ -1,0 +1,7 @@
+def isUnique(s):
+    record = set()
+    for i in range(len(s)):
+        if s[i] in record:
+            return False
+        record.add(s[i])
+    return True
