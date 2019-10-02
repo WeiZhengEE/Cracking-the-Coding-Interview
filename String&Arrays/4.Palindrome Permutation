@@ -1,0 +1,14 @@
+def check(s):
+    record = {}
+    for i in range(len(s)):
+        if s[i].isalpha():
+            c = s[i].lower()
+            record[c] = record.get(c, 0)+1
+    flag = False
+    for c in record:
+        if record[c]%2 != 0:
+            if not flag:
+                flag = True
+            else:
+                return False
+    return True
