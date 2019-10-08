@@ -1,0 +1,15 @@
+def rotate(grid):
+    if not grid or not grid[0]:
+        return
+    n = len(grid)
+    for layer in range(n//2):
+        start = layer
+        end = n-layer-1
+        for i in range(start, end):
+            distance = i - start
+            temp = grid[start][i]
+            grid[start][i] = grid[end-distance][start]
+            grid[end-distance][layer] = grid[end][end-distance]
+            grid[end][end-distance] = grid[i][end]
+            grid[i][end] = temp
+    return grid
