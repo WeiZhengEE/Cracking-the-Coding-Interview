@@ -1,0 +1,17 @@
+def zeroMatrix(grid):
+    if not grid or not grid[0]:
+        return
+    rows = set()
+    columns = set()
+    m = len(grid)
+    n = len(grid[0])
+    for i in range(m):
+        for j in range(n):
+            if grid[i][j] == 0:
+                rows.add(i)
+                columns.add(j)
+    for i in range(m):
+        for j in range(n):
+            if (i in rows) or (j in columns):
+                grid[i][j] = 0
+    return grid
