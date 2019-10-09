@@ -1,0 +1,11 @@
+def remove(root):
+    record = set()
+    pre = None
+    while root != None:
+        if root.val in record:
+            pre.next = root.next
+        else:
+            record.add(root.val)
+            pre = root
+        root = root.next
+    return
