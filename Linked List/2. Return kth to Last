@@ -1,0 +1,10 @@
+def kthLast(root, k):
+    slow = root
+    fast = root
+    while k > 0:
+        fast = fast.next
+        k -= 1
+    while fast:
+        slow = slow.next
+        fast = fast.next
+    return slow
