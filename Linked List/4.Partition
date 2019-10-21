@@ -1,0 +1,19 @@
+def partition(root, k):
+    if not root:
+        return
+    small = dummy1 = Node(0)
+    big = dummy2 = Node(0)
+    while root:
+        temp = root.next
+        if root.val < k:
+            dummy1.next = root
+            dummy1 = dummy1.next
+        else:
+            dummy2.next = root
+            dummy2 = dummy2.next
+        root.next = None
+        root = temp
+    if small.next and big.next:
+        dummy1.next = big.next
+        return small.next
+    return small.next or big.next
