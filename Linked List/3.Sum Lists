@@ -1,0 +1,18 @@
+def sumList(node1, node2):
+    carry = 0
+    val = 0
+    head = dummy = Node(0)
+    while node1 or node2:
+        val = carry
+        if node1:
+            val += node1.val
+            node1 = node1.next
+        if node2:
+            val += node2.val
+            node2 = node2.next
+        dummy.next = Node(val%10)
+        dummy = dummy.next
+        carry = val//10
+    if carry:
+        dummy.next = Node(carry)
+    return head.next
