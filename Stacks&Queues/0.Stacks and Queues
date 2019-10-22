@@ -1,0 +1,29 @@
+class MyStack:            
+    def __init__(self):
+        self.top = None
+    
+    def push(self, item):
+        node = StackNode(item)
+        node.next = self.top
+        self.top = node
+        return
+    
+    def pop(self):
+        if not self.top:
+            return
+        item = self.top.data
+        self.top = self.top.next
+        return item
+    
+    def peek(self):
+        if not self.top:
+            return
+        return self.top.data
+    
+    def isEmpty(self):
+        return self.top == None
+
+class StackNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
