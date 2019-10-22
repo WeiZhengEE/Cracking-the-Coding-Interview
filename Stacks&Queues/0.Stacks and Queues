@@ -27,3 +27,38 @@ class StackNode:
     def __init__(self, data):
         self.data = data
         self.next = None
+
+class MyQueue:            
+    def __init__(self):
+        self.first = None
+        self.last = None
+    
+    def add(self, item):
+        node = QueueNode(item)
+        if not self.last:
+            self.first = node
+        else:
+            self.last.next = node
+        self.last = node    
+    
+    def remove(self):
+        if not self.first:
+            return None
+        node = self.first
+        self.first = self.first.next
+        if not self.first:
+            self.last = None
+        return node.data
+    
+    def peek(self):
+        if not self.first:
+            return
+        return self.first.data
+    
+    def isEmpty(self):
+        return self.first == None
+
+class QueueNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
