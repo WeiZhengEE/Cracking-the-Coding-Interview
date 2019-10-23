@@ -1,0 +1,36 @@
+class MinStack:
+    def __init__(self):
+        self.top = None
+        
+    def push(self, item):
+        curMin = self.getMin()
+        if curMin == None or curMin >item:
+            curMin = item
+        node = MinStackNode(item, curMin)
+        node.next = self.top
+        self.top = node
+        return
+    
+    def pop(self):
+        if self.top == None:
+            return
+        item = self.top.data
+        self.top = self.top.next
+        return item
+        
+    def getMin(self):
+        if self.top == None:
+            return None
+        return self.top.curMin
+    
+    def isEmpty(self):
+        return self.top == None
+    
+    def getTop(self):
+        return self.top.data
+                  
+class MinStackNode:
+    def __init__(self, data, curMin):
+        self.data = data
+        self.curMin = curMin
+        self.next = None
