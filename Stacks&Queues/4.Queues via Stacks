@@ -1,0 +1,18 @@
+class QueueViaStack:            
+    def __init__(self):
+        self.stackIn = []
+        self.stackOut = []
+    
+    def add(self, item):
+        self.stackIn.append(item)
+        return
+    
+    def remove(self):
+        if self.stackOut == []:
+            while self.stackIn != []:
+                self.stackOut.append(self.stackIn.pop())
+        if self.stackOut != []:
+            return self.stackOut.pop()
+    
+    def isEmpty(self):
+        return self.stackIn == [] and self.stackOut == []
