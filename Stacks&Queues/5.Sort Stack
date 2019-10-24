@@ -1,0 +1,10 @@
+def stackSort(stack):
+    if not stack:
+        return stack
+    res = [stack.pop()]
+    while stack:
+        temp = stack.pop()
+        while res and res[-1] > temp:
+            stack.append(res.pop())
+        res.append(temp)
+    return res
