@@ -1,0 +1,10 @@
+def minimalTree(nums):
+    if not nums:
+        return
+    n = len(nums)
+    mid = n//2
+    root = Node(nums[mid])
+    root.left = minimalTree(nums[:mid])
+    if mid+1 < n:
+        root.right = minimalTree(nums[mid+1:])
+    return root
