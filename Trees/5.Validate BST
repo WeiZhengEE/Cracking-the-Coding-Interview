@@ -1,0 +1,12 @@
+def checkBST(root, lowerBound, upperBound):
+    if not root:
+        return True
+    if root.val < lowerBound or root.val > upperBound:
+        return False
+    return checkBST(root.left, lowerBound, root.val) and checkBST(root.right, root.val, upperBound)
+    
+
+def isBST(root):
+    if not root:
+        return False
+    return checkBST(root, -float('inf'), float('inf'))
