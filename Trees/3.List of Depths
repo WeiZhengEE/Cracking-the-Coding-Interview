@@ -1,0 +1,15 @@
+def levelTravel(root):
+    nodes = [root]
+    res = []
+    while nodes:
+        newNodes = []
+        level = []
+        for node in nodes:
+            level.append(node.val)
+            if node.left:
+                newNodes.append(node.left)
+            if node.right:
+                newNodes.append(node.right)
+        res.append(level)
+        nodes = newNodes
+    return res
