@@ -1,0 +1,15 @@
+def successor(node):
+    if not node:
+        return
+
+    if node.right:
+        node = node.right
+        while node.left != None:
+            node = node.left
+        return node
+    else:
+        parent = node.parent
+        while parent and parent.left != node:
+            node = parent
+            parent = node.parent
+        return parent
