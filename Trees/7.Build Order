@@ -1,0 +1,38 @@
+def schedule(projects, dependency):
+#Build Map
+    require = {}
+    for pair in dependency:
+        if pair[1] not in require:
+            require[pair[1]] = []
+        require[pair[1]].append(pair[0])
+    
+#Build State, 0 : unVisited, 1 : visiting, -1 : visited
+    state = {}
+    for project in projects:
+        state[project] = 0
+
+#DFS Travel
+    res = []
+    for project in projects:
+        if state[project] == 0:
+            if not dfs(state, require, project, res):
+                return None
+    
+    return res
+    
+def dfs(state, require, project, res):
+    if state[project] == 1:
+        return False
+    if state[project] == -1:
+        return True
+    
+    state[project] = 1
+    
+    if project in require:
+        for dependent in require[project]:
+            if not dfs(state, require, dependent, res):
+                return False
+    
+    state[project] = -1
+    res.append(project)
+    return True
