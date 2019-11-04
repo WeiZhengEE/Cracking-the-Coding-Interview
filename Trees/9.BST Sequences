@@ -1,0 +1,18 @@
+def BSTSequence(root):
+    res = []
+    BFS([root], [], res)
+    return res
+    
+def BFS(nodes, path, res):
+    if not nodes:
+        res.append(path[:])
+        return
+    for i in range(len(nodes)):
+        tempNodes = []
+        if nodes[i].left:
+            tempNodes.append(nodes[i].left)
+        if nodes[i].right:
+            tempNodes.append(nodes[i].right)
+        newNodes = nodes[:i] + tempNodes + nodes[i+1:]
+        BFS(newNodes, path[:]+[nodes[i].val], res)
+    return
