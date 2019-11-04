@@ -1,0 +1,14 @@
+def firstCommonAncestor(root, node1, node2):
+    if not root:
+        return
+    if root == node1 or root == node2:
+        return root
+    left = firstCommonAncestor(root.left, node1, node2)
+    right = firstCommonAncestor(root.right, node1, node2)
+    if left != None and right != None:
+        return root
+    if left != None:
+        return left
+    elif right != None:
+        return right
+    return
