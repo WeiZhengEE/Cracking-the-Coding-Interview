@@ -1,0 +1,18 @@
+def checkSubtree(t1, t2):
+    if t2 == None:
+        return True
+    if t1 == None:
+        return False
+    if t1.val == t2.val:
+        if checkSame(t1, t2):
+            return True
+    return checkSubtree(t1.left, t2) or checkSubtree(t1.right, t2)
+    
+def checkSame(t1, t2):
+    if t1 == None and t2 == None:
+        return True
+    if t1 == None or t2 == None:
+        return False
+    if t1.val != t2.val:
+        return False
+    return checkSame(t1.left, t2.left) and checkSame(t1.right, t2.right)
